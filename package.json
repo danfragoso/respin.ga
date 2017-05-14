@@ -1,0 +1,24 @@
+{
+  "name": "sinonimo",
+  "version": "0.0.1",
+  "description": "",
+  "main": "main.js",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "nunjucks": "^3.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node main.js",
+    "dev": "nodemon --watch web -e html,css main.js"
+  },
+  "keywords": [
+    "nunjucks",
+    "express",
+    "synonym",
+    "node"
+  ],
+  "author": "danfragoso",
+  "license": "GPL-3.0"
+}

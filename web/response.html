@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="row">
+  <div class="col s12 l10 offset-l1">
+    <div class="card-panel">
+      <div class="card-content">
+        <div class="row">
+          {% for words in text %}
+          <select class="browser-default resizeselect">
+            <option>{{words.word}}</option>
+            {% for synonyms in words.synonym %}
+            <option>{{synonyms}}</option>
+            {% endfor %}
+          </select>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+(function($, window){
+  $.fn.resizeselect = function(settings) {
+    return this.each(function() {
+      $(this).change(function(){
+        var $this = $(this);
+        var text = $this.find("option:selected").text();
+        var $test = $("<span>").html(text);
+        $test.appendTo('body');
+        var width = $test.width();
+        $test.remove();
+        $this.width(width + 2);
+      }).change();
+    });
+  };
+  $("select.resizeselect").resizeselect();
+})(jQuery, window);
+</script>
+{% endblock %}
