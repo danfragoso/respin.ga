@@ -2,23 +2,38 @@
 {% block body %}
 <div class="row">
   <div class="col s12 l10 offset-l1">
-    <div class="card-panel white">
+    <div class="card-panel white text">
       <form>
         <div class="row">
           <div class="input-field col s12">
-            <textarea id="textarea1" class="materialize-textarea"></textarea>
+            <textarea id="textarea1" class="materialize-textarea" data-length="10000"></textarea>
             <label for="textarea1">Texto</label>
           </div>
         </div>
         <a class="waves-effect waves-light teal lighten-2 btn" id="send-text">Enviar</a>
       </form>
     </div>
+<div class="card-panel loading">
+  <div class="preloader-wrapper small active">
+   <div class="spinner-layer spinner-teal-only">
+     <div class="circle-clipper left">
+       <div class="circle"></div>
+     </div><div class="gap-patch">
+       <div class="circle"></div>
+     </div><div class="circle-clipper right">
+       <div class="circle"></div>
+     </div>
+   </div>
+ </div>
+</div>
   </div>
 </div>
 {% endblock %}
 {% block scripts %}
 <script>
 $("#send-text").click(function(){
+$(".text").hide()
+$(".loading").show()
   $.post("/sendtext",{
     text: $("#textarea1").val()
   },function(data, status){
