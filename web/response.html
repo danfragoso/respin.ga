@@ -9,7 +9,7 @@
           <select class="browser-default resizeselect">
             <option>{{words.word}}</option>
             {% for synonyms in words.synonym %}
-            <option>{{synonyms}}</option>
+            <option value="bold">{{synonyms}}</option>
             {% endfor %}
           </select>
           {% endfor %}
@@ -37,5 +37,12 @@
   };
   $("select.resizeselect").resizeselect();
 })(jQuery, window);
+$("select").on('change', function() {
+  if($(this).val() === "bold"){
+    $(this).css( "font-weight", "bold" );
+  }else{
+    $(this).css( "font-weight", "normal" );
+  }
+});
 </script>
 {% endblock %}
