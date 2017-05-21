@@ -38,12 +38,12 @@ var listener = app.listen(process.env.PORT || 1025, function(){
 
 app.get('/', function(req, res) {
   res.render('index.html');
-  response = {
-    text: []
-  };
 });
 
 app.post('/sendtext', function(req, res) {
+  response = {
+    text: []
+  };
   getSyns(req.body.text.split(" "))
   res.send({redirect: '/response'});
 });
