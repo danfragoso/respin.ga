@@ -38,6 +38,9 @@ var listener = app.listen(process.env.PORT || 1025, function(){
 
 app.get('/', function(req, res) {
   res.render('index.html');
+  response = {
+    text: []
+  };
 });
 
 app.post('/sendtext', function(req, res) {
@@ -47,7 +50,4 @@ app.post('/sendtext', function(req, res) {
 
 app.get('/response', function(req, res) {
   res.render('response.html', response);
-  response = {
-    text: []
-  };
 });
